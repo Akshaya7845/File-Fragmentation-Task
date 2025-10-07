@@ -1,2 +1,3 @@
-Hi Hello Welcome to the Filefragmentation oncept
-*concept
+file fragmentation refes ti the data beign strored in non-contiguous blocks on a storage device,rather than  in a single,unbroken sequence which slows down the file access 
+this occurs due to the constant saving and deletion of files which creates gaps that get filled by new data causing files to be split 
+to resolve this a process called defragmentation or defrag reorganise the data into continuous blocks
