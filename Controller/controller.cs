@@ -86,9 +86,15 @@ public class FileController
             }
             else if (choice == "4")
             {
+                model.DeleteOldSplitFiles();
+                view.ShowDeletionCompleted();
+            }
+            else if (choice == "5")
+            {
                 view.ShowExitMessage();
                 break;
             }
+
             else
             {
                 view.ShowInvalidChoice();

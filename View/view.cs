@@ -38,8 +38,13 @@ public class FileView
         Console.WriteLine("1 - View a split file");
         Console.WriteLine("2 - Merge all files into 'output.txt'");
         Console.WriteLine("3 - Compare input.txt and output.txt");
-        Console.WriteLine("4 - Exit");
+        Console.WriteLine("4 - Delete all split files");
+        Console.WriteLine("5- Exit");
         Console.Write("Your choice: ");
+    }
+    public void ShowDeletionCompleted()
+    {
+        Console.WriteLine("Deletion completed.");
     }
 
     public string GetMenuChoice()
