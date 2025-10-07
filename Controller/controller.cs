@@ -15,8 +15,18 @@ public class FileController
     public void Run()
     {
         string fullText = view.GetUserParagraph();
-        model.SaveInputText(fullText);
-        view.ShowWriteSuccess(model.InputFileName);
+        /*model.SaveInputText(fullText);
+        view.ShowWriteSuccess(model.InputFileName);*/
+        try
+        {
+            model.SaveInputText(fullText);
+            view.ShowWriteSuccess(model.InputFileName);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error saving input file: {ex.Message}");
+        }
+
 
         int charsPerSplit = view.GetCharactersPerSplit();
 
@@ -41,7 +51,7 @@ public class FileController
             view.DisplayMenu();
             string choice = view.GetMenuChoice();
 
-            if (choice == "1")
+            /*if (choice == "1")
             {
                 int fileIndex = view.GetFileIndex(numberOfParts);
                 if (fileIndex >= 1 && fileIndex <= numberOfParts)
@@ -54,7 +64,30 @@ public class FileController
                 {
                     view.ShowInvalidFileNumber();
                 }
+            }*/
+            if (choice == "1")
+            {
+                int fileIndex = view.GetFileIndex(numberOfParts);
+                if (fileIndex >= 1 && fileIndex <= numberOfParts)
+                {
+                    string label = GetFileLabel(fileIndex, numberLength);
+
+                    try
+                    {
+                        string content = model.ReadFileContent(label);
+                        view.ShowFileContent(label, content);
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"Error reading file: {ex.Message}");
+                    }
+                }
+                else
+                {
+                    view.ShowInvalidFileNumber();
+                }
             }
+
             else if (choice == "2")
             {
                 List<string> labels = new List<string>();
